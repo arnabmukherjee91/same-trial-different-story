@@ -1,0 +1,22 @@
+{
+ "repeats": 40,
+ "draws": 10000,
+ "n_registry_events": 1352,
+ "n_paper_events": 52,
+ "coverage_all_registry": 0.9033,
+ "coverage_paper_events_registry_values": 0.7062,
+ "coverage_paper_events_paper_values": 0.701,
+ "null1_mean": 0.802,
+ "null1_2p5": 0.7423,
+ "null1_97p5": 0.8567,
+ "p_null1_one_sided": 0.0013,
+ "null2_mean": 0.6733,
+ "null2_2p5": 0.5803,
+ "null2_97p5": 0.764,
+ "p_null2_two_sided": 0.4851,
+ "pct_paper_events_freq_ge5": 92.3,
+ "pct_other_events_freq_ge5": 15.9,
+ "null2_pools_with_replacement": [
+  "('Non-Serious', '>=10%'): pool 13 < need 28"
+ ]
+}
