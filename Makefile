@@ -7,9 +7,9 @@ reproduce:
 	cd scripts && $(PY) 01_build_pairs.py && $(PY) 02_cross_source_conformal.py && $(PY) 03_describe_misses.py
 	$(MAKE) check FILES="build/pairs_all_sources.csv build/ctgov_serious_counts.csv build/pair_level_predictions.csv results/coverage_by_trial_source_method.csv results/source_differences_and_misses.csv"
 
-## Everything: also the 100-repeat same-trial test, the 10,000-draw randomization test, and both figures
+## Everything: also the 100-repeat same-trial test, the 10,000-draw randomization test, and all three figures
 all: reproduce
-	cd scripts && $(PY) 05_same_trial_cross_report.py 100 > ../build/same_trial_run_log.txt && $(PY) 06_selection_proof.py 40 && $(PY) 07_agentic_evidence_figure.py
+	cd scripts && $(PY) 05_same_trial_cross_report.py 100 > ../build/same_trial_run_log.txt && $(PY) 06_selection_proof.py 40 && $(PY) 07_agentic_evidence_figure.py && $(PY) 08_explainer_figure.py
 	$(MAKE) check
 
 ## Compare outputs with checksums/expected.md5 (all files, or only FILES if given)
