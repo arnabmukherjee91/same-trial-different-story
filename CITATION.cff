@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below."
+title: "Same trial, different story: conformal calibration across registry, journal and FDA reports of the same clinical trial"
+version: 0.1.0
+date-released: 2026-11-18
+authors:
+  - family-names: Mukherjee
+    given-names: Arnab
+    affiliation: "Oklahoma State University Center for Health Sciences"
+license: Apache-2.0
+keywords:
+  - conformal prediction
+  - adverse events
+  - clinical trials
+  - ClinicalTrials.gov
+  - selective reporting
+  - AI agents
+  - reproducibility
