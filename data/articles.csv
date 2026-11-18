@@ -1,0 +1,86 @@
+nct_id,trial,source,citation,locator,retrieved,period,term,arm,affected,at_risk,count_scope,reported_threshold
+NCT02446899,TULIP-2,publication,Morand EF et al. NEJM 2020;382:211-221 doi:10.1056/NEJMoa1912196,Table 3 (AEs >5% in anifrolumab group),2026-11-18,intervention period (52 wk),Upper respiratory tract infection,Anifrolumab 300 mg,39,180,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Upper respiratory tract infection,Placebo,18,182,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Nasopharyngitis,Anifrolumab 300 mg,28,180,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Nasopharyngitis,Placebo,20,182,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Infusion related reaction,Anifrolumab 300 mg,25,180,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Infusion related reaction,Placebo,14,182,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Bronchitis,Anifrolumab 300 mg,22,180,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Bronchitis,Placebo,7,182,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Urinary tract infection,Anifrolumab 300 mg,20,180,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Urinary tract infection,Placebo,25,182,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Herpes zoster,Anifrolumab 300 mg,13,180,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Herpes zoster,Placebo,2,182,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Sinusitis,Anifrolumab 300 mg,12,180,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Sinusitis,Placebo,9,182,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Arthralgia,Anifrolumab 300 mg,10,180,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Arthralgia,Placebo,6,182,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Back pain,Anifrolumab 300 mg,10,180,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Back pain,Placebo,3,182,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Cough,Anifrolumab 300 mg,10,180,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3,2026-11-18,intervention period (52 wk),Cough,Placebo,6,182,any AE,>5% anifrolumab arm
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3 (serious AEs in >=2 patients),2026-11-18,intervention period (52 wk),Pneumonia,Anifrolumab 300 mg,3,180,serious AE,>=2 patients in trial
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3 (serious AEs in >=2 patients),2026-11-18,intervention period (52 wk),Pneumonia,Placebo,7,182,serious AE,>=2 patients in trial
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3 (serious AEs in >=2 patients),2026-11-18,intervention period (52 wk),Gastroenteritis viral,Anifrolumab 300 mg,2,180,serious AE,>=2 patients in trial
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3 (serious AEs in >=2 patients),2026-11-18,intervention period (52 wk),Gastroenteritis viral,Placebo,0,182,serious AE,>=2 patients in trial
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3 (serious AEs in >=2 patients; 'Worsening of SLE'),2026-11-18,intervention period (52 wk),Systemic lupus erythematosus,Anifrolumab 300 mg,1,180,serious AE,>=2 patients in trial
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3 (serious AEs in >=2 patients; 'Worsening of SLE'),2026-11-18,intervention period (52 wk),Systemic lupus erythematosus,Placebo,6,182,serious AE,>=2 patients in trial
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3 (serious AEs in >=2 patients),2026-11-18,intervention period (52 wk),Radius fracture,Anifrolumab 300 mg,0,180,serious AE,>=2 patients in trial
+NCT02446899,TULIP-2,publication,Morand 2020 NEJM,Table 3 (serious AEs in >=2 patients),2026-11-18,intervention period (52 wk),Radius fracture,Placebo,2,182,serious AE,>=2 patients in trial
+NCT00410384,BLISS-76,publication,Furie R et al. Arthritis Rheum 2011;63:3918-3930 PMC5007058,Table 3 (treatment-emergent AEs >=10% of any group),2026-11-18,through week 76,Upper respiratory tract infection,Placebo,58,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Upper respiratory tract infection,Belimumab 1 mg/kg,53,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Upper respiratory tract infection,Belimumab 10 mg/kg,54,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Headache,Placebo,38,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Headache,Belimumab 1 mg/kg,56,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Headache,Belimumab 10 mg/kg,44,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Urinary tract infection,Placebo,43,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Urinary tract infection,Belimumab 1 mg/kg,50,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Urinary tract infection,Belimumab 10 mg/kg,44,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Arthralgia,Placebo,43,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Arthralgia,Belimumab 1 mg/kg,43,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Arthralgia,Belimumab 10 mg/kg,41,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Nausea,Placebo,27,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Nausea,Belimumab 1 mg/kg,43,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Nausea,Belimumab 10 mg/kg,46,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3 ('Diarrhea'),2026-11-18,through week 76,Diarrhoea,Placebo,28,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3 ('Diarrhea'),2026-11-18,through week 76,Diarrhoea,Belimumab 1 mg/kg,35,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3 ('Diarrhea'),2026-11-18,through week 76,Diarrhoea,Belimumab 10 mg/kg,33,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Nasopharyngitis,Placebo,24,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Nasopharyngitis,Belimumab 1 mg/kg,29,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Nasopharyngitis,Belimumab 10 mg/kg,43,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Sinusitis,Placebo,28,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Sinusitis,Belimumab 1 mg/kg,21,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Sinusitis,Belimumab 10 mg/kg,31,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Back pain,Placebo,21,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Back pain,Belimumab 1 mg/kg,26,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Back pain,Belimumab 10 mg/kg,27,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Fatigue,Placebo,25,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Fatigue,Belimumab 1 mg/kg,27,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Fatigue,Belimumab 10 mg/kg,21,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Pyrexia,Placebo,21,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Pyrexia,Belimumab 1 mg/kg,23,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Pyrexia,Belimumab 10 mg/kg,29,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Bronchitis,Placebo,21,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Bronchitis,Belimumab 1 mg/kg,19,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Bronchitis,Belimumab 10 mg/kg,32,273,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Insomnia,Placebo,13,275,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Insomnia,Belimumab 1 mg/kg,27,271,any AE,>=10% any group
+NCT00410384,BLISS-76,publication,Furie 2011 A&R,Table 3,2026-11-18,through week 76,Insomnia,Belimumab 10 mg/kg,17,273,any AE,>=10% any group
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Upper respiratory tract infection,Anifrolumab 150 mg,16,93,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Upper respiratory tract infection,Placebo,18,184,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Upper respiratory tract infection,Anifrolumab 300 mg,22,180,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Nasopharyngitis,Anifrolumab 150 mg,14,93,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Nasopharyngitis,Placebo,22,184,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Nasopharyngitis,Anifrolumab 300 mg,36,180,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Bronchitis,Anifrolumab 150 mg,7,93,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Bronchitis,Placebo,10,184,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Bronchitis,Anifrolumab 300 mg,16,180,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Herpes zoster,Anifrolumab 150 mg,5,93,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Herpes zoster,Placebo,3,184,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Herpes zoster,Anifrolumab 300 mg,10,180,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Urinary tract infection,Anifrolumab 150 mg,9,93,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Urinary tract infection,Placebo,27,184,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Urinary tract infection,Anifrolumab 300 mg,22,180,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Infusion related reaction,Anifrolumab 150 mg,9,93,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Infusion related reaction,Placebo,13,184,any AE,to verify
+NCT02446912,TULIP-1,publication,Furie R et al. Lancet Rheumatol 2019;1:e208-e219 doi:10.1016/S2665-9913(19)30076-1,safety table; carried over from 2026-11-01 feasibility extraction - RE-VERIFY,2026-11-01,52-wk treatment period (to verify),Infusion related reaction,Anifrolumab 300 mg,16,180,any AE,to verify
