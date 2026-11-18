@@ -16,20 +16,20 @@ BLUE, ORANGE, RED, INK, INK2, GRID, HDR = '#2a78d6', '#eb6834', '#c4314b', '#0b0
 plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 9.5, 'axes.edgecolor': INK2, 'xtick.color': INK2, 'ytick.color': INK2,
                      'axes.spines.top': False, 'axes.spines.right': False, 'axes.titleweight': 'bold', 'axes.titlesize': 11, 'axes.titlelocation': 'left'})
 fig = plt.figure(figsize=(16, 9.4)); fig.patch.set_facecolor('white')
-gs = fig.add_gridspec(2, 2, height_ratios=[0.78, 1], width_ratios=[1, 1], hspace=.36, wspace=.24, left=.055, right=.985, top=.9, bottom=.135)
+gs = fig.add_gridspec(2, 2, height_ratios=[0.78, 1], width_ratios=[1, 1], hspace=.5, wspace=.24, left=.055, right=.985, top=.9, bottom=.135)
 fig.suptitle('Study overview: adverse-event risk differences for the same lupus trials in ClinicalTrials.gov vs the journal article',
              x=.055, ha='left', fontsize=14, fontweight='bold', color=INK)
 
 # ---------------- A. sources table ----------------
 a = fig.add_subplot(gs[0, :]); a.axis('off'); a.set_title('A. Trials and sources', loc='left')
-cols = ['Trial', 'Registry ID', 'Drug (arms vs placebo)', 'ClinicalTrials.gov\nevent pairs', 'Journal article (table; reporting rule)', 'Article\nevent pairs', 'FDA review']
-W = [.08, .1, .2, .1, .3, .08, .14]; xs = np.cumsum([0] + W[:-1])
+cols = ['Trial', 'Registry ID', 'Drug (arms vs placebo)', 'ClinicalTrials.gov\nevent pairs', 'Journal article (table; reporting rule)', 'Article\nevent pairs', 'FDA approval review']
+W = [.075, .085, .155, .09, .32, .065, .21]; xs = np.cumsum([0] + W[:-1])
 rows = [
- ['TULIP-1', 'NCT02446912', 'anifrolumab IV 150 / 300 mg', n_reg['TULIP-1'], 'Furie 2019, Lancet Rheumatol (6 terms; re-verify)', n_pub['TULIP-1'], 'BLA 761123: pooled'],
- ['TULIP-2', 'NCT02446899', 'anifrolumab IV 300 mg', n_reg['TULIP-2'], 'Morand 2020, NEJM, Table 3 (AEs >5% in drug arm)', n_pub['TULIP-2'], 'BLA 761123: pooled'],
- ['BLISS-76', 'NCT00410384', 'belimumab IV 1 / 10 mg/kg', n_reg['BLISS-76'], 'Furie 2011, Arthritis Rheum, Table 3 (AEs >=10% any arm)', n_pub['BLISS-76'], 'BLA 125370: to locate'],
- ['BLISS-52', 'NCT00424476', 'belimumab IV 1 / 10 mg/kg', n_reg['BLISS-52'], 'not yet extracted (training data only)', '-', 'BLA 125370: to locate'],
- ['D3461C00008', 'NCT02962960', 'anifrolumab SC, phase 2 (n = 36)', n_reg['SC-phase2 (D3461C00008)'], 'not extracted (training data only)', '-', '-'],
+ ['TULIP-1', 'NCT02446912', 'anifrolumab IV 150 / 300 mg', n_reg['TULIP-1'], 'Furie 2019, Lancet Rheumatol 1:e208-19 (6 terms; re-verify)', n_pub['TULIP-1'], 'Saphnelo approval review:\ntrials combined, no per-trial counts'],
+ ['TULIP-2', 'NCT02446899', 'anifrolumab IV 300 mg', n_reg['TULIP-2'], 'Morand 2020, NEJM 382:211-21, Table 3 (AEs >5% in drug arm)', n_pub['TULIP-2'], 'Saphnelo approval review:\ntrials combined, no per-trial counts'],
+ ['BLISS-76', 'NCT00410384', 'belimumab IV 1 / 10 mg/kg', n_reg['BLISS-76'], 'Furie 2011, Arthritis Rheum 63:3918-30, Table 3 (AEs >=10% any arm)', n_pub['BLISS-76'], 'Benlysta approval review:\nscanned pages, text not yet readable'],
+ ['BLISS-52', 'NCT00424476', 'belimumab IV 1 / 10 mg/kg', n_reg['BLISS-52'], 'Navarra 2011, Lancet 377:721-31 (not extracted)', 0, 'Benlysta approval review:\nscanned pages, text not yet readable'],
+ ['D3461C00008', 'NCT02962960', 'anifrolumab SC, phase 2 (n = 36)', n_reg['SC-phase2 (D3461C00008)'], 'Bruce 2021, Lancet Rheumatol 3:e101-10 (not extracted)', 0, 'None: this injection form was\nnot part of the 2021 approval'],
 ]
 top, rh = .93, .155
 for j, c in enumerate(cols):
@@ -41,8 +41,12 @@ for i, r in enumerate(rows):
     for j, v in enumerate(r):
         a.text(xs[j] + .005, y + rh / 2, str(v), transform=a.transAxes, fontsize=9, va='center', color=INK2 if i > 2 else INK,
                fontweight='bold' if j == 0 else 'normal')
-a.text(0, top - .12 - 5 * rh - .1, 'Event pair = one adverse-event term (MedDRA) x one active arm vs placebo x seriousness category.  '
-       'Risk difference (RD) = proportion with the event on drug - proportion on placebo.', transform=a.transAxes, fontsize=8.6, color=INK2)
+a.text(0, top - .12 - 5 * rh - .3,
+       'Event pair = one adverse-event term (MedDRA) x one active arm vs placebo x seriousness category.  '
+       'Risk difference (RD) = proportion with the event on drug - proportion on placebo.\n'
+       'FDA approval review = the document in which the U.S. Food and Drug Administration evaluated the trials before approving the drug '
+       '(Saphnelo: BLA 761123, 2021; Benlysta: BLA 125370, 2011).\n'
+       'BLISS-52 and D3461C00008 are used for training and calibration only.', transform=a.transAxes, fontsize=8.6, color=INK2, linespacing=1.5)
 
 # ---------------- B. registry RD vs article RD, coloured by coverage ----------------
 b = fig.add_subplot(gs[1, 0]); R = E[E.reported].copy()
@@ -83,7 +87,7 @@ c.set_ylabel('Coverage of 90% conformal interval (%)'); c.set_ylim(0, 135); c.se
 c.legend(frameon=False, loc='upper right', fontsize=8.5)
 c.set_title('C. Coverage falls as events get more frequent;\n48 of the 52 article pairs have frequency >= 5%', fontsize=10.5)
 
-fig.text(.055, .045, f'Method: model trained and calibrated on ClinicalTrials.gov only; event-level 5-fold split within trials; split-conformal 90% interval (alpha = 0.10). '
+fig.text(.055, .045, f'Method: model trained and calibrated on ClinicalTrials.gov only; event-level 5-fold split within trials; split-conformal 90% interval (alpha = 0.10).\n'
          f'Coverage over 100 repeats: all registry pairs {100 * g.cov_all_registry:.1f}%; article-reported pairs {100 * g.cov_paper_events_registry_values:.1f}% using registry RD, '
          f'{100 * g.cov_paper_events_paper_values:.1f}% using article RD.', fontsize=8.6, color=INK, wrap=True)
 fig.text(.055, .012, 'B and C use 40 repeats (scripts/06). Sources: ClinicalTrials.gov API v2 (retrieved 2026-11-18); article tables as listed in A. TULIP-1 article values await re-verification.',

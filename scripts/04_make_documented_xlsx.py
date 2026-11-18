@@ -344,7 +344,7 @@ for rel, doc in DOCS.items():
         c.alignment = WR
         m = doc['cols'].get(col)
         if m:
-            c.comment = Comment(f'{m[0]}. Units/values: {m[1]}. Source: {m[2]}', 'Claude', width=320, height=130)
+            c.comment = Comment(f'{m[0]}. Units/values: {m[1]}. Source: {m[2]}', 'A. Mukherjee', width=320, height=130)
         p90 = int(df[col].astype(str).str.len().quantile(.9)) if len(df) else 8
         ws.column_dimensions[get_column_letter(j)].width = min(45, max(10, len(col) + 2, p90 + 2))
     for i, row in enumerate(df.itertuples(index=False), 2):

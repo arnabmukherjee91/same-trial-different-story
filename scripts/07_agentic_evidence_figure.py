@@ -17,7 +17,7 @@ reg = [int(cnt.loc[t, 'ctgov']) for t in tr]; pub = [int(cnt.loc[t, 'publication
 # consequence 1: mislabeled trial (earlier dataset called NCT02962960 "TULIP-2")
 g = T[(T.model == 'GBM') & T.method.str.startswith('A')].set_index('trial')
 cov_real, cov_mis = 100 * g.loc['TULIP-2', 'cov_all_registry'], 100 * g.loc['SC-phase2 (D3461C00008)', 'cov_all_registry']
-# consequence 2: automated PDF reader returned two different herpes zoster counts for the same pooled population
+# consequence 2: automated PDF reader returned 75/44 (nasopharyngitis row) instead of 28/6 for pooled herpes zoster
 rd_a = 75 / 459 - 44 / 466; rd_b = 28 / 459 - 6 / 466
 pdf_gap = 100 * abs(rd_a - rd_b)
 med_real, max_real = S.abs_rd_diff_pp.median(), S.abs_rd_diff_pp.max()
@@ -54,9 +54,9 @@ c = fig.add_subplot(gs[0, 2])
 vals = [med_real, max_real, pdf_gap]; cols = [BLUE, BLUE, ORANGE]
 c.bar([0, 1, 2], vals, .55, color=cols)
 for i, v in enumerate(vals): c.text(i, v + .06, f'{v:.2f} pp', ha='center', fontsize=10, color=INK)
-c.set_xticks([0, 1, 2], ['Median real\nregistry-paper\ndifference', 'Largest real\nregistry-paper\ndifference', 'Automated reader:\ntwo values for one\nFDA herpes zoster RD'], fontsize=8.5)
+c.set_xticks([0, 1, 2], ['Median real\nregistry-paper\ndifference', 'Largest real\nregistry-paper\ndifference', 'Automated reader\nerror: FDA herpes\nzoster (75/44 vs 28/6)'], fontsize=8.5)
 c.set_ylabel('Difference in risk difference (percentage points)'); c.set_ylim(0, pdf_gap * 1.3); c.grid(axis='y', color=GRID)
-c.set_title('C. One unchecked reading inconsistency\nexceeds every genuine report difference', fontsize=11)
+c.set_title('C. One unchecked reading error\nexceeds every genuine report difference', fontsize=11)
 
 # D. ledger: what the agent did autonomously, the guardrail, what it caught, the human checkpoint
 d = fig.add_subplot(gs[1, :]); d.axis('off')
@@ -66,9 +66,9 @@ W = [.11, .25, .21, .25, .16]
 rows = [
  ['Retrieve registry', '5 trials via ClinicalTrials.gov API: 2,058 arm-level counts, 1,352 event pairs', 'Row and summed-count checksums against the live API', '5 of 5 trials matched exactly', 'None needed'],
  ['Identify trials', 'Mapped each NCT number to trial, drug, arms, doses', 'Cross-check NCT number against registry title and arms', '2 of 3 trial labels in the earlier dataset were wrong (BLISS-76; a 36-patient phase 2 study)', 'Confirm corrected IDs before use'],
- ['Read FDA review', 'Searched a 460,000-character review for per-trial AE tables', 'Cross-table consistency; match study numbers to arms', 'Pooled tables only; "Study 04/05" = TULIP-2/TULIP-1; two different herpes zoster counts (75/44 vs 28/6)', 'Verify the herpes zoster table on the PDF page'],
+ ['Read FDA review', 'Searched a 460,000-character review for per-trial AE tables', 'Cross-table consistency; match study numbers to arms', 'Pooled tables only; "Study 04/05" = TULIP-2/TULIP-1; reader returned herpes zoster 75/44 - true value 28/6', 'Resolved: confirmed in published pooled table'],
  ['Extract papers', 'Read 2 article tables (NEJM, PMC): 67 arm-level records', 'Every number stored with table locator and date; re-read against the page', f'{n_differ} of {n_pairs} pairs differ from the registry (median {med_real:.2f} pp)', 'Second, independent extractor'],
- ['Access', 'Tried the TULIP-1 article (ScienceDirect)', 'Never bypass paywalls or bot checks', '1 source blocked; earlier extraction flagged "re-verify"', 'Retrieve through the library'],
+ ['Access', 'Tried the TULIP-1 article (ScienceDirect)', 'Never bypass access controls or bot checks', '1 source blocked; earlier extraction flagged "re-verify"', 'Retrieve through the library'],
  ['Analyse', '6 scripts; 100-repeat splits; 10,000-draw randomization tests', 'Trial- and event-level splits; null model reported alongside ML', 'ML model about equal to the null model - reported, not hidden', 'Interpretation and claims'],
  ['Reproduce', 'Full rerun of the pipeline', 'Outputs compared byte for byte', '7 of 7 core output tables identical on rerun', 'None needed'],
 ]
@@ -89,7 +89,6 @@ for i, r in enumerate(rows):
 fig.suptitle('Why this study needs an agentic workflow - and why the agent needs guardrails', x=.06, ha='left', fontsize=14, fontweight='bold', color=INK)
 fig.text(.06, .94, 'All numbers come from this project\'s files and the 2026-11-18 session log. Orange text in D = an error or trap that an unchecked pipeline would have carried into the analysis. '
          'Time savings and agent-vs-human accuracy are not shown: they will be measured during the fellowship.', fontsize=8.6, color=INK2, wrap=True)
-fig.text(.06, .005, 'C: both herpes zoster values came from an automated reader of the FDA Saphnelo review (pooled 300 mg N=459 vs placebo N=466); which is correct must be checked on the PDF page. '
-         'B: same-trial design, method A, 100 repeats.', fontsize=8, color=INK2)
+fig.text(.06, .005, 'C: FDA Saphnelo review, pooled 300 mg (N=459) vs placebo (N=466). The automated reader returned 75/44 (the nasopharyngitis row); the true 28/6 is confirmed in\nTummala et al., Lupus Sci Med 2021 (PMC7893670), Table 2. B: same-trial design, method A, 100 repeats.', fontsize=8, color=INK2)
 fig.savefig('../figures/agentic_workflow_evidence.png', dpi=170)
 print('saved', dict(reg=reg, pub=pub, cov_real=round(cov_real, 1), cov_mis=round(cov_mis, 1), pdf_gap=round(pdf_gap, 2), med=med_real, mx=max_real, n_differ=n_differ))

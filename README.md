@@ -88,9 +88,9 @@ time a number changes. It depends equally on **guardrails**. In the first workin
 | Guardrail | What it caught |
 |---|---|
 | Cross-check every NCT number against the registry title and arms | **2 of 3 trial labels** in an earlier internal dataset were wrong. One mislabeled "trial" was a 36-patient phase 2 study, with registry coverage of 45% against 88% for the real TULIP-2 |
-| Cross-table consistency on FDA reviews | An automated PDF reading gave two different herpes zoster counts for one pooled population. The gap is 2.09 points of risk difference, bigger than any genuine registry-article difference |
+| Cross-table consistency on FDA reviews | An automated PDF reading returned the wrong row for pooled herpes zoster (75/44 instead of 28/6, since confirmed in the published pooled analysis). The error is 2.09 points of risk difference, bigger than any genuine registry-article difference |
 | Match FDA study numbers to arms | FDA "Study 04" is TULIP-2 and "Study 05" is TULIP-1 |
-| Never bypass paywalls or bot checks | One article was blocked; its earlier extraction is flagged **re-verify** |
+| Never bypass access controls or bot checks | One article was blocked; its earlier extraction is flagged **re-verify** |
 | Row- and count-checksums against the live API | 5 of 5 trials matched exactly |
 | Byte-level reproducibility | All outputs identical across two machines (Python 3.10 and 3.13) |
 
@@ -100,13 +100,16 @@ Both are planned outcomes (see the roadmap below).
 
 ## Data
 
-| Trial | NCT | Drug / route | Registry | Article table | FDA review |
+| Trial | NCT | Drug / route | Registry | Article table | FDA approval review |
 |---|---|---|---|---|---|
-| TULIP-1 | NCT02446912 | anifrolumab IV 150/300 mg | 160 terms | Furie 2019 *Lancet Rheumatol*, 6 terms (**re-verify**) | pooled only |
-| TULIP-2 | NCT02446899 | anifrolumab IV 300 mg | 60 terms | Morand 2020 *NEJM* Table 3, 14 terms | pooled only |
-| BLISS-76 | NCT00410384 | belimumab IV 1/10 mg/kg | 246 terms | Furie 2011 *Arthritis Rheum* (PMC5007058) Table 3, 13 terms | to locate |
-| BLISS-52 | NCT00424476 | belimumab IV 1/10 mg/kg | 165 terms | planned | to locate |
-| D3461C00008 | NCT02962960 | anifrolumab SC, phase 2 (n = 36) | 75 terms | not planned | none |
+| TULIP-1 | NCT02446912 | anifrolumab IV 150/300 mg | 160 terms | Furie 2019 *Lancet Rheumatol*, 6 terms (**re-verify**) | Saphnelo review: trials combined, no per-trial counts |
+| TULIP-2 | NCT02446899 | anifrolumab IV 300 mg | 60 terms | Morand 2020 *NEJM* Table 3, 14 terms | Saphnelo review: trials combined, no per-trial counts |
+| BLISS-76 | NCT00410384 | belimumab IV 1/10 mg/kg | 246 terms | Furie 2011 *Arthritis Rheum* (PMC5007058) Table 3, 13 terms | Benlysta review: scanned pages, text not yet readable |
+| BLISS-52 | NCT00424476 | belimumab IV 1/10 mg/kg | 165 terms | Navarra 2011 *Lancet* 377:721-31 (planned) | Benlysta review: scanned pages, text not yet readable |
+| D3461C00008 | NCT02962960 | anifrolumab SC, phase 2 (n = 36) | 75 terms | Bruce 2021 *Lancet Rheumatol* 3:e101-10 (not planned) | None: this injection form was not part of the 2021 approval |
+
+*FDA approval review* = the document in which the U.S. Food and Drug Administration evaluated the trials before approving the drug
+(Saphnelo: BLA 761123, 2021; Benlysta: BLA 125370, 2011).
 
 Unit of analysis: risk difference RD = a/n<sub>1</sub> − c/n<sub>0</sub> for each trial × active arm × MedDRA term × seriousness
 (1,352 registry pairs). Model inputs are drug, route, dose, term, organ class, seriousness, phase, follow-up and arm sizes.
@@ -165,7 +168,8 @@ make excel       # documented .xlsx copy of every table (an About sheet plus a c
 
 ## v0.2 - complete, checkable dataset (December 2026)
 - [ ] Re-verify the TULIP-1 article table (library access); extract the BLISS-52 article
-- [ ] Locate the Benlysta FDA clinical review; check the Saphnelo herpes zoster tables on the PDF page
+- [x] Locate the Benlysta FDA medical review (212 scanned pages); resolve the Saphnelo herpes zoster value (28/6)
+- [ ] OCR the Benlysta medical review and extract per-trial tables for BLISS-76 and BLISS-52
 - [ ] Post the extraction protocol on OSF **before** final extraction
 - [ ] Double extraction: a human extractor plus an agent-assisted pass, reconciled; report agreement before reconciliation
 - [ ] Target: 100-150 matched trial-event pairs across 4 phase 3 trials
@@ -184,4 +188,4 @@ make excel       # documented .xlsx copy of every table (an About sheet plus a c
 ## Cite
 
 See [`CITATION.cff`](CITATION.cff). Author: **Arnab Mukherjee**, Oklahoma State University Center for Health Sciences.
-Research agent: Claude (Anthropic), working under the rules in `AGENTS.md`. Every decision was reviewed by the author.
+Research agent: an AI coding agent, working under the rules in `AGENTS.md`. Every decision was reviewed by the author.
