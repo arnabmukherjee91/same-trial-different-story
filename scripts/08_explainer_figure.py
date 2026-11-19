@@ -22,14 +22,14 @@ fig.suptitle('Study overview: adverse-event risk differences for the same lupus 
 
 # ---------------- A. sources table ----------------
 a = fig.add_subplot(gs[0, :]); a.axis('off'); a.set_title('A. Trials and sources', loc='left')
-cols = ['Trial', 'Registry ID', 'Drug (arms vs placebo)', 'ClinicalTrials.gov\nevent pairs', 'Journal article (table; reporting rule)', 'Article\nevent pairs', 'FDA approval review']
+cols = ['Trial', 'Registry ID', 'Drug (arms vs placebo)', 'ClinicalTrials.gov\nevent pairs', 'Journal article (table; reporting rule)', 'Article\nevent pairs', 'FDA review']
 W = [.075, .085, .155, .09, .32, .065, .21]; xs = np.cumsum([0] + W[:-1])
 rows = [
- ['TULIP-1', 'NCT02446912', 'anifrolumab IV 150 / 300 mg', n_reg['TULIP-1'], 'Furie 2019, Lancet Rheumatol 1:e208-19 (6 terms; re-verify)', n_pub['TULIP-1'], 'Saphnelo approval review:\ntrials combined, no per-trial counts'],
- ['TULIP-2', 'NCT02446899', 'anifrolumab IV 300 mg', n_reg['TULIP-2'], 'Morand 2020, NEJM 382:211-21, Table 3 (AEs >5% in drug arm)', n_pub['TULIP-2'], 'Saphnelo approval review:\ntrials combined, no per-trial counts'],
- ['BLISS-76', 'NCT00410384', 'belimumab IV 1 / 10 mg/kg', n_reg['BLISS-76'], 'Furie 2011, Arthritis Rheum 63:3918-30, Table 3 (AEs >=10% any arm)', n_pub['BLISS-76'], 'Benlysta approval review:\nscanned pages, text not yet readable'],
- ['BLISS-52', 'NCT00424476', 'belimumab IV 1 / 10 mg/kg', n_reg['BLISS-52'], 'Navarra 2011, Lancet 377:721-31 (not extracted)', 0, 'Benlysta approval review:\nscanned pages, text not yet readable'],
- ['D3461C00008', 'NCT02962960', 'anifrolumab SC, phase 2 (n = 36)', n_reg['SC-phase2 (D3461C00008)'], 'Bruce 2021, Lancet Rheumatol 3:e101-10 (not extracted)', 0, 'None: this injection form was\nnot part of the 2021 approval'],
+ ['TULIP-1', 'NCT02446912', 'anifrolumab IV 150 / 300 mg', n_reg['TULIP-1'], 'Furie 2019, Lancet Rheumatol 1:e208-19*', n_pub['TULIP-1'], 'Saphnelo review (pooled)'],
+ ['TULIP-2', 'NCT02446899', 'anifrolumab IV 300 mg', n_reg['TULIP-2'], 'Morand 2020, NEJM 382:211-21, Table 3 (AEs >5% in drug arm)', n_pub['TULIP-2'], 'Saphnelo review (pooled)'],
+ ['BLISS-76', 'NCT00410384', 'belimumab IV 1 / 10 mg/kg', n_reg['BLISS-76'], 'Furie 2011, Arthritis Rheum 63:3918-30, Table 3 (AEs >=10% any arm)', n_pub['BLISS-76'], 'Benlysta review'],
+ ['BLISS-52', 'NCT00424476', 'belimumab IV 1 / 10 mg/kg', n_reg['BLISS-52'], 'Navarra 2011, Lancet 377:721-31', 0, 'Benlysta review'],
+ ['D3461C00008', 'NCT02962960', 'anifrolumab SC, phase 2 (n = 36)', n_reg['SC-phase2 (D3461C00008)'], 'Bruce 2021, Lancet Rheumatol 3:e101-10', 0, '-'],
 ]
 top, rh = .93, .155
 for j, c in enumerate(cols):
@@ -42,11 +42,9 @@ for i, r in enumerate(rows):
         a.text(xs[j] + .005, y + rh / 2, str(v), transform=a.transAxes, fontsize=9, va='center', color=INK2 if i > 2 else INK,
                fontweight='bold' if j == 0 else 'normal')
 a.text(0, top - .12 - 5 * rh - .3,
-       'Event pair = one adverse-event term (MedDRA) x one active arm vs placebo x seriousness category.  '
-       'Risk difference (RD) = proportion with the event on drug - proportion on placebo.\n'
-       'FDA approval review = the document in which the U.S. Food and Drug Administration evaluated the trials before approving the drug '
-       '(Saphnelo: BLA 761123, 2021; Benlysta: BLA 125370, 2011).\n'
-       'BLISS-52 and D3461C00008 are used for training and calibration only.', transform=a.transAxes, fontsize=8.6, color=INK2, linespacing=1.5)
+       'Event pair: MedDRA term x active arm x seriousness.  RD: incidence on drug - incidence on placebo.  '
+       'FDA review: Saphnelo BLA 761123 (2021); Benlysta BLA 125370 (2011).\n'
+       'BLISS-52 and D3461C00008: training and calibration only (no article pairs).  * Pending re-verification.', transform=a.transAxes, fontsize=8.6, color=INK2, linespacing=1.5)
 
 # ---------------- B. registry RD vs article RD, coloured by coverage ----------------
 b = fig.add_subplot(gs[1, 0]); R = E[E.reported].copy()
@@ -54,8 +52,8 @@ R['x'], R['y'] = 100 * R.rd, 100 * R.rd_pub
 cov = R.cov_ct >= .5
 lim = (-7, 14.5)
 b.plot(lim, lim, color=INK2, lw=1, ls='--', zorder=1)
-b.scatter(R.x[cov], R.y[cov], s=34, color=BLUE, zorder=3, label=f'Inside the 90% interval in most repeats (n={cov.sum()})', edgecolor='white', linewidth=.6)
-b.scatter(R.x[~cov], R.y[~cov], s=40, color=RED, zorder=4, label=f'Outside the 90% interval in most repeats (n={(~cov).sum()})', edgecolor='white', linewidth=.6)
+b.scatter(R.x[cov], R.y[cov], s=34, color=BLUE, zorder=3, label=f'Covered (n={cov.sum()})', edgecolor='white', linewidth=.6)
+b.scatter(R.x[~cov], R.y[~cov], s=40, color=RED, zorder=4, label=f'Not covered (n={(~cov).sum()})', edgecolor='white', linewidth=.6)
 lab = {('TULIP-2', 'Upper respiratory tract infection', 'Anifrolumab 300 mg'): ('TULIP-2 URTI, 300 mg', 4.0, 13.3),
        ('TULIP-2', 'Bronchitis', 'Anifrolumab 300 mg'): ('TULIP-2 bronchitis, 300 mg', 9.3, 6.6),
        ('TULIP-1', 'Upper respiratory tract infection', 'Anifrolumab 150 mg'): ('TULIP-1 URTI, 150 mg', 9.3, 4.9),
@@ -71,12 +69,12 @@ b.set_xlim(lim); b.set_ylim(lim)
 b.axhline(0, color=GRID, lw=.8, zorder=0); b.axvline(0, color=GRID, lw=.8, zorder=0)
 b.set_xlabel('Risk difference in ClinicalTrials.gov (percentage points)'); b.set_ylabel('Risk difference in the journal article (percentage points)')
 b.grid(color=GRID, lw=.5); b.legend(frameon=False, loc='lower right', fontsize=8.5)
-b.set_title('B. 52 event pairs in both sources: the values agree\n(dashed line = identical); misses are the large risk differences', fontsize=10.5)
+b.set_title('B. Registry vs article risk difference (52 event pairs)', fontsize=10.5)
 
 # ---------------- C. coverage by event frequency ----------------
 c = fig.add_subplot(gs[1, 1]); lab_bins = list(B.fbin); xx = np.arange(len(B)); w = .38
-c.bar(xx - w / 2, 100 * B.cov_all, w, color=BLUE, label='All ClinicalTrials.gov event pairs (n = 1,352)')
-c.bar(xx + w / 2, 100 * B.cov_paper_registry.fillna(0), w, color=ORANGE, label='Event pairs reported in the article (n = 52)')
+c.bar(xx - w / 2, 100 * B.cov_all, w, color=BLUE, label='All registry event pairs (n = 1,352)')
+c.bar(xx + w / 2, 100 * B.cov_paper_registry.fillna(0), w, color=ORANGE, label='Article-reported event pairs (n = 52)')
 for i, r in B.iterrows():
     c.text(i - w / 2, 100 * r.cov_all + 1.5, f'{100 * r.cov_all:.0f}%\nn={r.n_all}', ha='center', fontsize=8, color=INK)
     if r.n_paper == r.n_paper and r.n_paper > 0:
@@ -85,12 +83,12 @@ c.axhline(90, color=INK2, ls='--', lw=1); c.text(len(B) - .5, 91.5, 'nominal 90%
 c.set_xticks(xx, [f'{b_}' for b_ in lab_bins]); c.set_xlabel('Event frequency: higher of the two arms\' incidence (ClinicalTrials.gov)')
 c.set_ylabel('Coverage of 90% conformal interval (%)'); c.set_ylim(0, 135); c.set_yticks(range(0, 101, 20)); c.grid(axis='y', color=GRID)
 c.legend(frameon=False, loc='upper right', fontsize=8.5)
-c.set_title('C. Coverage falls as events get more frequent;\n48 of the 52 article pairs have frequency >= 5%', fontsize=10.5)
+c.set_title('C. Coverage by event frequency', fontsize=10.5)
 
 fig.text(.055, .045, f'Method: model trained and calibrated on ClinicalTrials.gov only; event-level 5-fold split within trials; split-conformal 90% interval (alpha = 0.10).\n'
          f'Coverage over 100 repeats: all registry pairs {100 * g.cov_all_registry:.1f}%; article-reported pairs {100 * g.cov_paper_events_registry_values:.1f}% using registry RD, '
          f'{100 * g.cov_paper_events_paper_values:.1f}% using article RD.', fontsize=8.6, color=INK, wrap=True)
-fig.text(.055, .012, 'B and C use 40 repeats (scripts/06). Sources: ClinicalTrials.gov API v2 (retrieved 2026-11-18); article tables as listed in A. TULIP-1 article values await re-verification.',
+fig.text(.055, .012, 'B and C: 40 repeats; covered = inside the interval in most repeats. Sources: ClinicalTrials.gov API v2 (retrieved 2026-11-18); article tables as listed in A.',
          fontsize=8, color=INK2)
 fig.savefig('../figures/explainer.png', dpi=170)
 print('saved; reported pairs >=5%:', int((R.freq >= .05).sum()), 'of', len(R), '| misses:', int((~cov).sum()))

@@ -99,36 +99,36 @@ fig, ax = plt.subplots(1, 3, figsize=(15, 4.9), gridspec_kw=dict(width_ratios=[1
 fig.patch.set_facecolor('white')
 # A: coverage vs frequency
 a = ax[0]; xs = np.arange(len(LAB)); w = .36
-a.bar(xs - w / 2, 100 * by_bin.cov_all, w, color=BLUE, label='All registry events', zorder=3)
-a.bar(xs + w / 2, 100 * by_bin.cov_paper_registry.fillna(0), w, color=ORANGE, label='Events the paper reports', zorder=3)
-a.axhline(90, color=INK2, lw=1, ls='--', zorder=2); a.text(len(LAB) - .45, 86, '90% target', ha='right', color=INK2, fontsize=9)
+a.bar(xs - w / 2, 100 * by_bin.cov_all, w, color=BLUE, label='All registry event pairs', zorder=3)
+a.bar(xs + w / 2, 100 * by_bin.cov_paper_registry.fillna(0), w, color=ORANGE, label='Article-reported event pairs', zorder=3)
+a.axhline(90, color=INK2, lw=1, ls='--', zorder=2); a.text(len(LAB) - .45, 86, 'nominal 90%', ha='right', color=INK2, fontsize=9)
 for i, r in enumerate(by_bin.itertuples()):
     a.text(i - w / 2, 2, f'n={r.n_all}', ha='center', va='bottom', fontsize=8, color='white', zorder=4)
     if r.n_paper == r.n_paper and r.n_paper > 0:
         a.text(i + w / 2, 2, f'n={int(r.n_paper)}', ha='center', va='bottom', fontsize=8, color='white', zorder=4)
 a.set_xticks(xs, LAB); a.set_xlabel('Event frequency (higher arm incidence, registry)'); a.set_ylabel('Coverage of 90% interval (%)')
 a.set_ylim(0, 118); a.set_yticks([0,20,40,60,80,100]); a.grid(axis='y', color=GRID, zorder=0); a.legend(frameon=False, loc='upper center', ncol=2, fontsize=9)
-a.set_title('A. Coverage falls as events get more common')
+a.set_title('A. Coverage by event frequency')
 # B: where events sit
 b = ax[1]
-for lab, sel, col in [('Events no paper reports', ~C.reported, BLUE), ('Events the paper reports', C.reported, ORANGE)]:
+for lab, sel, col in [('Not reported', ~C.reported, BLUE), ('Reported', C.reported, ORANGE)]:
     v = np.sort(100 * C.loc[sel, 'freq'].values); b.step(v, np.arange(1, len(v) + 1) / len(v) * 100, where='post', color=col, lw=2, label=f'{lab} (n={len(v)})')
 for t in (5, 10):
     b.axvline(t, color=INK2, lw=1, ls=':'); b.text(t + .4, 4, f'{t}%', color=INK2, fontsize=9)
 b.set_xscale('symlog', linthresh=1); b.set_xlim(0, 60); b.set_xticks([0, 1, 2, 5, 10, 20, 50], ['0', '1', '2', '5', '10', '20', '50'])
 b.set_xlabel('Event frequency, % (log scale)'); b.set_ylabel('Cumulative share of events (%)'); b.grid(color=GRID)
 b.legend(frameon=False, loc='upper left', fontsize=9)
-b.set_title(f'B. Papers report the common events\n{stats["pct_paper_events_freq_ge5"]:.0f}% of reported vs {stats["pct_other_events_freq_ge5"]:.0f}% of others are >=5%', fontsize=11)
+b.set_title(f'B. Event frequency distribution\n(>=5%: {stats["pct_paper_events_freq_ge5"]:.0f}% reported vs {stats["pct_other_events_freq_ge5"]:.0f}% not reported)', fontsize=11)
 # C: randomization test
 c = ax[2]; bins = np.linspace(.55, 1.05, 51)
-c.hist(100 * null1, bins=100 * bins, color=BLUE, alpha=.85, label='Null 1: random 52 events,\nsame trials & seriousness')
-c.hist(100 * null2, bins=100 * bins, color=AQUA, alpha=.85, label='Null 2: random 52 unreported\nevents, same frequency\n& seriousness')
+c.hist(100 * null1, bins=100 * bins, color=BLUE, alpha=.85, label='Null 1: matched on trial\nand seriousness')
+c.hist(100 * null2, bins=100 * bins, color=AQUA, alpha=.85, label='Null 2: unreported pairs,\nmatched on frequency\nand seriousness')
 c.axvline(100 * obs_ct, color=ORANGE, lw=2.5); c.axvline(100 * obs_pub, color=ORANGE, lw=1.5, ls='--')
-c.text(91, c.get_ylim()[1] * .97, f'Orange: the paper\'s 52 events\nregistry values {100 * obs_ct:.1f}% (solid)\npaper values {100 * obs_pub:.1f}% (dashed)', ha='left', va='top', fontsize=9, color=INK)
-c.set_xlabel('Coverage of a set of 52 events (%)'); c.set_ylabel(f'Count of {NDRAW:,} random draws'); c.grid(axis='y', color=GRID)
+c.text(91, c.get_ylim()[1] * .97, f'Observed (52 pairs)\nregistry RD: {100 * obs_ct:.1f}%\narticle RD: {100 * obs_pub:.1f}% (dashed)', ha='left', va='top', fontsize=9, color=INK)
+c.set_xlabel('Coverage, 52 event pairs (%)'); c.set_ylabel(f'Count of {NDRAW:,} random draws'); c.grid(axis='y', color=GRID)
 c.legend(frameon=False, loc='center right', bbox_to_anchor=(1.0, .45), fontsize=8.5); c.set_xlim(52, 122); c.set_xticks([60,70,80,90,100])
-c.set_title(f'C. Not a random sample (p = {p1:.3f}),\nbut matches a frequency-matched one', fontsize=11)
-fig.suptitle('Within a trial, registry-calibrated intervals fail on the paper\'s events because papers report the common events, not because their numbers differ',
+c.set_title(f'C. Randomization test, {NDRAW:,} draws\n(null 1: p = {p1:.3f}; null 2: p = {p2_two:.2f})', fontsize=11)
+fig.suptitle('Coverage of registry-calibrated 90% conformal intervals on article-reported event pairs',
              x=.01, ha='left', fontsize=12, fontweight='bold', color=INK)
 fig.text(.01, .005, f'Model trained and calibrated on ClinicalTrials.gov, event-level 5-fold split within trials, {R} repeats, one conformal margin (alpha=0.10). '
          f'Paper events: 52 from TULIP-1, TULIP-2, BLISS-76. All registry events: {len(C)} from 5 trials. Null 2 pool: phase 3 trials only.', fontsize=8, color=INK2)
