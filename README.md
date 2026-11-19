@@ -96,7 +96,7 @@ time a number changes. It depends equally on **guardrails**. In the first workin
 
 The rules agents follow in this repo are in [`AGENTS.md`](AGENTS.md); the session-by-session audit log
 is at the end of the same file. We have **not** yet measured time saved or agent-versus-human extraction accuracy.
-Both are planned outcomes (see the roadmap below).
+Both are planned next steps.
 
 ## Data
 
@@ -155,35 +155,15 @@ make excel       # documented .xlsx copy of every table (an About sheet plus a c
 * The randomization test's frequency-matched null draws some high-frequency events with replacement (13 available for 28 slots).
 * The model adds little over a null model. The contribution is the calibration audit, not the predictor.
 
-## Status and roadmap
+## Status
 
-**Started:** November 2026 · **Current:** v0.1 pilot · **Target:** preprint by end of February 2027
+**Pilot (v0.1), started November 2026.** The results above are exploratory, from three trials with extracted article tables.
 
-## v0.1 - pilot (November 2026) ✅
-- [x] Registry snapshots for 5 lupus trials, checksum-verified against the live API
-- [x] Article tables for TULIP-2 and BLISS-76; partial TULIP-1
-- [x] Same-trial cross-report test, leave-one-trial-out test, randomization test of selective reporting
-- [x] Guardrails written down (`AGENTS.md`); audit log started
-- [x] Byte-identical reproduction on two machines
+Next steps:
 
-## v0.2 - complete, checkable dataset (December 2026)
-- [ ] Re-verify the TULIP-1 article table (library access); extract the BLISS-52 article
-- [x] Locate the Benlysta FDA medical review (212 scanned pages); resolve the Saphnelo herpes zoster value (28/6)
-- [ ] OCR the Benlysta medical review and extract per-trial tables for BLISS-76 and BLISS-52
-- [ ] Post the extraction protocol on OSF **before** final extraction
-- [ ] Double extraction: a human extractor plus an agent-assisted pass, reconciled; report agreement before reconciliation
-- [ ] Target: 100-150 matched trial-event pairs across 4 phase 3 trials
-
-## v0.3 - pre-specified analysis (January 2027)
-- [ ] Same-trial coverage by report, trial and event category, with exact confidence intervals
-- [ ] Sensitivity analysis: pairs with matching follow-up windows and denominators only
-- [ ] Selection-aware calibration: frequency-stratified (Mondrian) and source-conditional margins
-- [ ] Measure the agent workflow: extraction time and agent-versus-human agreement
-
-## v1.0 - preprint and release (February 2027)
-- [ ] medRxiv preprint with code, data and audit log
-- [ ] Zenodo DOI for the release
-- [ ] Template so another group can run the audit on a different drug class from a list of NCT numbers
+* Complete and double-check the article and FDA extractions
+* Extend the analysis to more trial-event pairs, with sensitivity checks
+* Share the results as a preprint
 
 ## Cite
 

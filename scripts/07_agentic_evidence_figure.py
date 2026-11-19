@@ -1,6 +1,6 @@
 """Companion figure: why this study needs an agentic workflow, and why the agent needs guardrails.
 Every number is read from this project's own files or from events logged during the 2026-11-18 session
-(see README). No time savings or accuracy rates are claimed - those are to be measured during the fellowship."""
+(see README). No time savings or accuracy rates are claimed - those have not been measured yet."""
 import pandas as pd, numpy as np, textwrap
 import matplotlib
 matplotlib.use('Agg')
@@ -88,7 +88,7 @@ for i, r in enumerate(rows):
         d.text(xs[j] + .006, yy + rh / 2, txt, transform=d.transAxes, fontsize=8.6, va='center', color=col, fontweight='bold' if j == 0 else 'normal')
 fig.suptitle('Why this study needs an agentic workflow - and why the agent needs guardrails', x=.06, ha='left', fontsize=14, fontweight='bold', color=INK)
 fig.text(.06, .94, 'All numbers come from this project\'s files and the 2026-11-18 session log. Orange text in D = an error or trap that an unchecked pipeline would have carried into the analysis. '
-         'Time savings and agent-vs-human accuracy are not shown: they will be measured during the fellowship.', fontsize=8.6, color=INK2, wrap=True)
+         'Time savings and agent-vs-human accuracy are not shown: they have not been measured yet.', fontsize=8.6, color=INK2, wrap=True)
 fig.text(.06, .005, 'C: FDA Saphnelo review, pooled 300 mg (N=459) vs placebo (N=466). The automated reader returned 75/44 (the nasopharyngitis row); the true 28/6 is confirmed in\nTummala et al., Lupus Sci Med 2021 (PMC7893670), Table 2. B: same-trial design, method A, 100 repeats.', fontsize=8, color=INK2)
 fig.savefig('../figures/agentic_workflow_evidence.png', dpi=170)
 print('saved', dict(reg=reg, pub=pub, cov_real=round(cov_real, 1), cov_mis=round(cov_mis, 1), pdf_gap=round(pdf_gap, 2), med=med_real, mx=max_real, n_differ=n_differ))
